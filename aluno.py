@@ -45,18 +45,23 @@ class Aluno:
             return "Professor não associado a esta disciplina!"
 
     def aumentaDesconto(self, porcentagem):
-        self.__desconto = desconto+porcentagem
+        self.__desconto = self.__desconto+porcentagem
 
     def diminuiDesconto(self, porcentagem):
-        self.__desconto = desconto-porcentagem
+        self.__desconto = self.__desconto-porcentagem
 
     def retornaSobrenome(self):
         return ' '.join(self.__nome.split(' ')[1:])
 
     def retornaValorMensalidade(self):
         mensalidade = 0
-        for i in range(len(disciplinas)):
-            mensalidade += disciplinas[i].getMensalidade()]
-        mensalidade = mensalidade-(desconto*100/mensalidade)
+        for i in range(len(self.__disciplinas)):
+            mensalidade += self.__disciplinas[i].getMensalidade()
+        mensalidade = mensalidade-(self.__desconto*100/mensalidade)
         return mensalidade
 
+    def retornaCargaHoraria(self):
+        horasTotais = float()
+        for disciplina in self.getDisciplinas():
+            horasTotais += disciplina.getCargaHoraria()
+        return horasTotais
