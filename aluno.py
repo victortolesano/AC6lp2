@@ -38,3 +38,25 @@ class Aluno:
     def getDisciplinas(self):
         return self.__disciplinas
 
+    def adicionaDisciplina(self, disciplina):
+        if disciplina.getProfessor().getRA() == self.__ra:
+            self.__disciplinas.append(disciplina)
+        else:
+            return "Professor não associado a esta disciplina!"
+
+    def aumentaDesconto(self, porcentagem):
+        self.__desconto = desconto+porcentagem
+
+    def diminuiDesconto(self, porcentagem):
+        self.__desconto = desconto-porcentagem
+
+    def retornaSobrenome(self):
+        return ' '.join(self.__nome.split(' ')[1:])
+
+    def retornaValorMensalidade(self):
+        mensalidade = 0
+        for i in range(len(disciplinas)):
+            mensalidade += disciplinas[i].getMensalidade()]
+        mensalidade = mensalidade-(desconto*100/mensalidade)
+        return mensalidade
+
